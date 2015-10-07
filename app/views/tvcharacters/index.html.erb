@@ -1,0 +1,6 @@
+<% @tvcharacters.each do |tvcharacter| %>
+  <% if tvcharacter.name == 'Frank Underwood' %>
+    <p><%= tvcharacter.quotes[Random.rand(0..(tvcharacter.quotes.count-1))].character_quote %></p>
+  <% end %>
+<% end %>
+
