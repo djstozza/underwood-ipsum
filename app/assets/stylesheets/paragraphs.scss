@@ -1,3 +1,53 @@
 // Place all the styles related to the paragraphs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	background-image: image_url("house-of-cards.jpg");
+	background-size: cover;
+
+	
+	nav {
+		z-index: 1;
+	}
+
+	p#heading {
+		text-align: center;
+	}
+
+	strong {
+		font-size: 30px;
+	}
+
+	span {
+		font-size: 15px;
+	}
+
+	div.jumbotron {
+		margin: 0 auto;
+		opacity: 0.6;
+		overflow: scroll;
+		height: 100vh;
+		width: 90vw;
+		margin-top: -55px;
+		z-index: -1;
+		div.textbox {
+			margin: 0 auto;
+			width: 80vw;
+
+			p {
+				font-size: 12px;
+				text-align: justify;
+			}
+		
+		}
+		
+
+	}
+}
+
+
+
+
+
+

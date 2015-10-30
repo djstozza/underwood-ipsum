@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>UnderwoodIpsum</title>
+  <title>Underwood-ipsum</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Underwood-ipsum</h1>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      	<%= form_for(@paragraph) do |f| %>
+		  <div class="form-control navbar-inverse">
+		    <%= f.label :tvcharacter_id, 'Character', :id => "character" %>
+		    <%= f.select :tvcharacter_id, Tvcharacter.all.map{|tvcharacter| ["#{tvcharacter.name}", tvcharacter.id]}, :include_blank => true %>
+		  
+		    <%= f.label :quotations, 'Quotes per paragraph' %>
+		    <%= f.number_field :quotations, :min => 1, :max => 20, :id => 'quotes', :include_blank => true %>
+		 
+		    <%= f.label :paragraph_number, 'Number of paragraphs' %>
+		    <%= f.number_field :paragraph_number, :min => 1, :max => 10, :id => 'paragraphs', :include_blank => true %>
+		  
+		    <%= f.submit "Generate" %>
+		  </div>
+		<% end %>
+		</ul>
+    	<ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 <%= include_gon(:init => true) %>
 <%= yield %>
 

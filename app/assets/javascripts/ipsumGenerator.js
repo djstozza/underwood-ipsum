@@ -1,9 +1,9 @@
-var app = app || {};
+// var app = app || {};
 
-_.templateSettings = {
-evaluate : /\{\[([\s\S]+?)\]\}/g,     // {[ console.log("Hello"); ]} - runs
-interpolate : /\{\{([\s\S]+?)\}\}/g   // {{ key }} - interpolates
-};
+// _.templateSettings = {
+// evaluate : /\{\[([\s\S]+?)\]\}/g,     // {[ console.log("Hello"); ]} - runs
+// interpolate : /\{\{([\s\S]+?)\}\}/g   // {{ key }} - interpolates
+// };
 
 // $(document).ready(function () {
 // 	if ($('#main').length === 0) {

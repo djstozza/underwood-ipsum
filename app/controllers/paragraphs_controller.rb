@@ -6,12 +6,11 @@ class ParagraphsController < ApplicationController
   def index
     @paragraphs = Paragraph.all
   end
-
+  def home
+  end
   # GET /paragraphs/1
   # GET /paragraphs/1.json
-  def show
-
-    
+  def show 
   end
 
   # GET /paragraphs/new

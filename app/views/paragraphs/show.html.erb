@@ -1,11 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+<div class="textbox">
+	<p id="heading"><strong>Underwood-ipsum</strong><span>... and other memorable Kevin Spacey roles</span></p>
+	<% @paragraph.paragraph_number.times do %>
+		<p>
+		  <% @paragraph.tvcharacter.quotes[0..@paragraph.tvcharacter.quotes.length-1].sample(@paragraph.quotations).each do |quote| %>
+		  	<%= quote.character_quote %>
+		  <% end %>
+		</p>
+	<% end %>
+</div>
 
-<% @paragraph.paragraph_number.times do %>
-<p>
-  <% @paragraph.tvcharacter.quotes[0..@paragraph.tvcharacter.quotes.length-1].sample(@paragraph.quotations).each do |quote| %>
-  	<%= quote.character_quote %>
-  <% end %>
-</p>
-<% end %>
-<%= link_to 'Edit', edit_paragraph_path(@paragraph) %> |
-<%= link_to 'Back', paragraphs_path %>
+</div>
+
