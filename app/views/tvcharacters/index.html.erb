@@ -1,6 +1,18 @@
 <% @tvcharacters.each do |tvcharacter| %>
-  <% if tvcharacter.name == 'Frank Underwood' %>
+  <% if tvcharacter.name === 'Frank Underwood' %>
     <p><%= tvcharacter.quotes[Random.rand(0..(tvcharacter.quotes.count-1))].character_quote %></p>
   <% end %>
 <% end %>
 
+
+<form type="text/javascript">
+	Number of quotes per paragraph:
+	<input id="line" type="number" name="quantity" min="1" max="10">
+</form>
+
+<form id="paragraph" type="text/javascript">
+	Number of paragraphs:
+	<input id="paragraph" type="number" name="quantity" min="1" max="10">
+</form>
+
+<div id="main"></div>

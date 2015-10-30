@@ -1,8 +1,8 @@
 class TvcharactersController < ApplicationController
   before_action :set_tvcharacter, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /tvcharacters
-  # GET /tvcharacters.json
+  # GET /tvcharacters.jsonszaw
   def index
     @tvcharacters = Tvcharacter.all
   end

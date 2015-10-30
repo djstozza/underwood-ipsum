@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20151011120905) do
   enable_extension "plpgsql"
 
   create_table "paragraphs", force: :cascade do |t|
-    t.string   "content"
     t.integer  "quote_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "tvcharacter_id"
+    t.integer  "quotations"
+    t.integer  "paragraph_number"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "quotes", force: :cascade do |t|

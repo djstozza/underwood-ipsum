@@ -10,11 +10,16 @@ class ParagraphsController < ApplicationController
   # GET /paragraphs/1
   # GET /paragraphs/1.json
   def show
+
+    
   end
 
   # GET /paragraphs/new
   def new
     @paragraph = Paragraph.new
+
+    # gon.quotations = @paragraph.quotations
+    # gon.paragraphs = @paragraph.paragraph_number
   end
 
   # GET /paragraphs/1/edit
@@ -69,6 +74,6 @@ class ParagraphsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paragraph_params
-      params.require(:paragraph).permit(:content, :quote_id)
+      params.require(:paragraph).permit(:content, :quote_id, :tvcharacter_id, :quote_id, :quotations, :paragraph_number)
     end
 end

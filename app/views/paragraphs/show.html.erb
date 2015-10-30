@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% @paragraph.paragraph_number.times do %>
 <p>
-  <strong>Content:</strong>
-  <%= @paragraph.content %>
+  <% @paragraph.tvcharacter.quotes[0..@paragraph.tvcharacter.quotes.length-1].sample(@paragraph.quotations).each do |quote| %>
+  	<%= quote.character_quote %>
+  <% end %>
 </p>
-
-<p>
-  <strong>Quote:</strong>
-  <%= @paragraph.quote_id %>
-</p>
-
+<% end %>
 <%= link_to 'Edit', edit_paragraph_path(@paragraph) %> |
 <%= link_to 'Back', paragraphs_path %>

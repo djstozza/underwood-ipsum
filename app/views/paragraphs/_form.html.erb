@@ -12,12 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
+    <%= f.label :tvcharacter_id, 'Character', :id => "character" %>
+    <%= f.select :tvcharacter_id, Tvcharacter.all.map{|tvcharacter| ["#{tvcharacter.name}", tvcharacter.id]}, :include_blank => true %>
   </div>
   <div class="field">
-    <%= f.label :quote_id %><br>
-    <%= f.number_field :quote_id %>
+    <%= f.label :quotations, 'Quotes per paragraph' %>
+    <%= f.number_field :quotations, :min => 1, :max => 20, :id => 'quotes', :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :paragraph_number, 'Number of paragraphs' %>
+    <%= f.number_field :paragraph_number, :min => 1, :max => 10, :id => 'paragraphs', :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
