@@ -1,7 +1,7 @@
 <%= form_for(@paragraph) do |f| %>
 
   <div class="field">
-    <%= f.label :tvcharacter_id, 'Character', :id => "character" %>
+    <%= f.label :tvcharacter_id, 'Character' %>
     <%= f.select :tvcharacter_id, Tvcharacter.all.map{|tvcharacter| ["#{tvcharacter.name}", tvcharacter.id]}, :include_blank => true %>
   </div>
   <div class="field">

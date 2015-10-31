@@ -1,3 +1,38 @@
+// $(document).ready(function() {
+// 	$('quotes').on
+// 	console.log($('input#quotes option').val());
+// 	$('input#generate').hide();
+	
+// 	($('#paragraph_tvcharacter_id') && $('#quotes') && $('#paragraphs')).on('change', function () {
+// 		var tvCharacter = $('#paragraph_tvcharacter_id').find(':selected').text();
+// 		var lines = $('#quotes').val();
+// 		var blocks = $('#paragraphs').val();
+// 		console.log(tvCharacter + " " + lines + " " + blocks);
+// 		if (tvCharacter === "" || lines === 0 || blocks === 0) {
+// 			$('input#generate').hide();
+// 		} else if (tvCharacter !== "" && lines !== 0 && blocks !== 0) {
+// 			$('input#generate').show();
+// 		}
+// 	});
+	// $('#quotes').on('change', function () {
+	// 	var lines = $(this).val();
+	// 	if (lines === "") {
+	// 		$('input#generate').hide();
+	// 	} else {
+	// 		$('input#generate').show();
+	// 	}
+	// })
+
+
+	// if ($('select#paragraph_tvcharacter_id option value').text() === "") {
+	// 	$('input#generate').hide();
+	// } else {
+	// 	$('input#generate').show();
+	// }
+	
+// })
+
+
 // var app = app || {};
 
 // _.templateSettings = {

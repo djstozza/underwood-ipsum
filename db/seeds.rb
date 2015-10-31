@@ -7,6 +7,7 @@ t4 = Tvcharacter.create :name => "John Doe"
 t5 = Tvcharacter.create :name => "Prot"
 t6 = Tvcharacter.create :name => "Lieutenant Chris Sabian"
 t7 = Tvcharacter.create :name => "Lloyd Chasseur"
+t8 = Tvcharacter.create :name => "Buddy Ackerman"
 
 Quote.destroy_all
 require 'open-uri'
@@ -178,3 +179,25 @@ lloyd.each do |quote|
 end
 lchas_quotes.reject! { |quote| quote.empty? }
 lchas_quotes.each { |quote| t7.quotes.create :character_quote => quote }
+
+buddy_ackerman_url = "http://www.imdb.com/character/ch0018834/quotes"
+swimming_with_sharks = Nokogiri::HTML(open(buddy_ackerman_url))
+buddy_quotes = swimming_with_sharks.css("body#styleguide-v2 div#wrapper div#root layer div#pagecontent div#tn15 div#tn15main").text.strip.split("\n")
+ba_quotes = []
+buddy = []
+bach_quotes = []
+buddy_quotes.each do |quote|
+	matches = quote.match(/(Buddy:\s{3}.*)/)
+	unless matches.nil?
+		ba_quotes << matches[1]
+	end
+end
+
+buddy = ba_quotes.join().split(/Buddy:\s{3}/)
+buddy.each do |quote|
+	quote.gsub!(/[A-Z][a-z]+:\s.*|\[.+?\]|\.\.\..*goes\./, "")
+	quote.gsub!(/What.*beers\.\.\.\s+/, "What, your job is unfair to you? Grow up, way it goes. People use you? Life's unfair? Grow up, way it goes. Your girlfriend doesn't love you? Tough shit, way it goes. Your wife gets raped and shot, and they leave their unfinished beers... their... their stinking longnecks just lying there on the gr - So be it. Way it goes.")
+	bach_quotes << quote if quote.chars.length > 9
+end
+bach_quotes.reject! { |quote| quote.empty? }
+bach_quotes.each { |quote| t8.quotes.create :character_quote => quote }
