@@ -73,6 +73,6 @@ class ParagraphsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paragraph_params
-      params.require(:paragraph).permit(:content, :quote_id, :tvcharacter_id, :quote_id, :quotations, :paragraph_number)
+      params.require(:paragraph).permit(:tvcharacter_id, :quote_id, :quotations, :paragraph_number)
     end
 end

@@ -5,6 +5,8 @@ t2 = Tvcharacter.create :name => "Roger 'Verbal' Kint"
 t3 = Tvcharacter.create :name => "Lester Burnham"
 t4 = Tvcharacter.create :name => "John Doe"
 t5 = Tvcharacter.create :name => "Prot"
+t6 = Tvcharacter.create :name => "Lieutenant Chris Sabian"
+t7 = Tvcharacter.create :name => "Lloyd Chasseur"
 
 Quote.destroy_all
 require 'open-uri'
@@ -119,57 +121,60 @@ end
 p_quotes.reject! { |quote| quote.empty? }
 p_quotes.each { |quote| t5.quotes.create :character_quote => quote }
 
-# frank_quotes = character_quotes.split(/Frank Underwood:\s/)
-# f_quotes = []
-# frank_quotes.each do |quote|
-# 	#needs to be destructive otherise changes won't be pushed through 
-# 	quote.gsub!(/([A-Z][a-z]+(\.){,1}(\s[A-Z]{,1}[a-z]+){,1}:\s.*|\[.+?\]\s?)/, "")
-# 	#the ?/] prevents the selector from over-reaching if there is more than one [...] in a quote block
 
-# 	f_quotes << quote
-	
-# end
+chris_sabian_url = "http://enq.translatum.gr/wiki/The_Negotiator"
+negotiator = Nokogiri::HTML(open(chris_sabian_url))
+chris_quotes = negotiator.css("body div#content div#bodyContent div#mw-content-text p").text.strip.split(/Lieutenant Chris Sabian:\s/)
 
-# f_quotes.reject! { |quote| quote.empty? }
-# f_quotes.each { |quote| t1.quotes.create :character_quote => quote }
+cs_quotes = []
+chris_quotes.each do |quote|
+	quote.gsub!(/([A-Z][a-z]+\s){1,2}[A-Z][a-z]+:\s.*|\(.+?\)|\[.+?\]/, "")
+	cs_quotes << quote
+end
+cs_quotes.reject! { |quote| quote.empty? }
+cs_quotes.each { |quote| t6.quotes.create :character_quote => quote }
 
+chris_sabian_url1 = "http://www.imdb.com/character/ch0412365/quotes"
+negotiator1 = Nokogiri::HTML(open(chris_sabian_url1))
+chris1_quotes = negotiator1.css("body#styleguide-v2 div#wrapper div#root layer div#pagecontent div#tn15 div#tn15main").text.strip.split("\n")
+cs1_quotes = []
+chris1 = []
+c1_quotes = []
+chris1_quotes.each do |quote|
+	matches = quote.match(/(Lieutenant Chris Sabian:\s{3}.*)/)
+	unless matches.nil?
+		cs1_quotes << matches[1]
+	end
+end
 
-# claire_quotes = character_quotes.split(/Claire Underwood:\s/)
-# c_quotes = []
-# claire_quotes.each do |quote|
-# 	quote.gsub!(/([A-Z][a-z]+(\.){,1}(\s[A-Z][a-z]+){,1}:\s.*|\[.+?\]\s?)/, "") 
-# 	c_quotes << quote
-# end
+chris1 = cs1_quotes.join().split(/Lieutenant Chris Sabian:\s{3}/)
+chris1.each do |quote|
+	quote.gsub!(/([A-Z][a-z]+\s){1,2}[A-Z][a-z]+:\s.*|\(.+?\)|\[.+?\]|\".*\"|Wide\.\s{1,4}/, "")
+	quote.gsub!(/I want you to apologize for telling your mother she looks\.\.\./, "I want you to apologize for telling your mother she looks... Wide.")
+	c1_quotes << quote
+end
 
-# c_quotes.reject! { |quote| quote.empty? || quote.chars.length < 11 }
-# c_quotes.each { |quote| t2.quotes.create :character_quote => quote }
+c1_quotes.reject! { |quote| quote.empty? }
+c1_quotes.each { |quote| t6.quotes.create :character_quote => quote }
+t6.quotes = t6.quotes.uniq
 
-# zoe_quotes = character_quotes.split(/Zoe Barnes:\s/)
-# z_quotes = []
-# zoe_quotes.each do |quote|
-# 	quote.gsub!(/([A-Z][a-z]+(\.){,1}(\s[A-Z][a-z]+){,1}:\s.*|\[.+?\]\s?)/, "")
-# 	z_quotes << quote
-# end
+lloyd_chasseur_url = "http://www.imdb.com/character/ch0018830/quotes"
+ref = Nokogiri::HTML(open(lloyd_chasseur_url))
+lloyd_quotes = ref.css("body#styleguide-v2 div#wrapper div#root layer div#pagecontent div#tn15 div#tn15main").text.strip.split("\n")
+lc_quotes = []
+lloyd = []
+lchas_quotes = []
+lloyd_quotes.each do |quote|
+	matches = quote.match(/(Lloyd:\s{3}.*)/)
+	unless matches.nil?
+		lc_quotes << matches[1]
+	end
+end
 
-# z_quotes.reject! { |quote| quote.empty? || quote.chars.length < 11 }
-# z_quotes.each { |quote| t3.quotes.create :character_quote => quote }
-
-# f_underwood = Nokogiri::HTML(open("http://www.imdb.com/character/ch0518097/quotes"))
-# frank_quotes = []
-# quotes = f_underwood.css("body.fixed div#wrapper div#root layer div#pagecontent div.quotes div#tn15main div#tn15content").text.strip
-
-# # quotes = quotes.split "\n\n"
-# quotes = quotes.split /Francis Underwood:\s\s\s|\n+/
-# # quotes = quotes.split (/\n+/)
-
-# quotes.each do |quote|
-# 	quote = quote.chomp.chomp.chomp
-# 	if quote.match(/[A-Z][a-z]+\s[A-Z][a-z]+:\s|".*\)|\[.*\]|Freddy:.+|The content.+staff|One heartbeat away from the presidency and not a single vote cast in my name. Democracy is so overrated.|[A-Z].+overated/)
-# 		quote.gsub(/[A-Z][a-z]+\s[A-Z][a-z]+:\s|".*\)|\[.*\]|Freddy:.+|The content.+staff|One heartbeat away from the presidency and not a single vote cast in my name. Democracy is so overrated.|[A-Z].+overated/, "")
-# 	else frank_quotes << quote if quote.match(/.+[^\n+]/)
-# 	end
-# end
-
-# frank_quotes.each do |quote|
-# 	t1.quotes.create :character_quote => quote
-# end
+lloyd = lc_quotes.join().split(/Lloyd:\s{3}/)
+lloyd.each do |quote|
+	quote.gsub!(/([A-Z][a-z]+\s){,1}[A-Z][a-z]+:\s.*|\[.+?\]/, "")
+	lchas_quotes << quote if quote.chars.length > 9
+end
+lchas_quotes.reject! { |quote| quote.empty? }
+lchas_quotes.each { |quote| t7.quotes.create :character_quote => quote }

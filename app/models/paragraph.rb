@@ -14,4 +14,8 @@
 class Paragraph < ActiveRecord::Base
 	belongs_to :quote
 	belongs_to :tvcharacter
+
+	validates :tvcharacter_id, :presence => true
+	validates :quotations, :presence => true
+	validates :paragraph_number, :presence => true
 end
