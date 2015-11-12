@@ -1,1 +1,1 @@
-json.extract! @tvcharacter, :id, :name, :created_at, :updated_at
+json.extract! @tvcharacter, :id, :quotes, :created_at, :updated_at

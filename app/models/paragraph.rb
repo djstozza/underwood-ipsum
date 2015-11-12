@@ -12,8 +12,8 @@
 #
 
 class Paragraph < ActiveRecord::Base
-	belongs_to :quote
 	belongs_to :tvcharacter
+	has_many :quotes, :through => :subcategories
 
 	validates :tvcharacter_id, :presence => true
 	validates :quotations, :presence => true

@@ -2,16 +2,24 @@ class TvcharactersController < ApplicationController
   before_action :set_tvcharacter, only: [:show, :edit, :update, :destroy]
   
   # GET /tvcharacters
-  # GET /tvcharacters.jsonszaw
+  # GET /tvcharacters.json
   def index
     @tvcharacters = Tvcharacter.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @tvcharacters.as_json(only: [:id, :name], include: [:quotes, {quotes: {only: [:id, :character_quote]}}])}
+    end
   end
 
   # GET /tvcharacters/1
   # GET /tvcharacters/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @tvcharacter.as_json(only: [:id, :name], include: [:quotes, {quotes: {only: [:id, :character_quote]}}])}
+    end
   end
-
+ 
   # GET /tvcharacters/new
   def new
     @tvcharacter = Tvcharacter.new

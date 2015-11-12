@@ -5,6 +5,10 @@ class ParagraphsController < ApplicationController
   # GET /paragraphs.json
   def index
     @paragraphs = Paragraph.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @paragraphs.as_json(only: [:id, :quotations, :paragraph_number, :tvcharacter_id])}
+    end
   end
   def home
   end

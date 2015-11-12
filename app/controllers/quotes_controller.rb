@@ -5,11 +5,19 @@ class QuotesController < ApplicationController
   # GET /quotes.json
   def index
     @quotes = Quote.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @quotes.as_json(only: [:id, :character_quote], include: [:tvcharacter, {tvcharacter: {only: [:id, :name]}}])}
+    end
   end
 
   # GET /quotes/1
   # GET /quotes/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @quote.as_json(only: [:id, :character_quote], include: [:tvcharacter, {tvcharacter: {only: [:id, :name]}}])}
+    end
   end
 
   # GET /quotes/new
