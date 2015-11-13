@@ -7,7 +7,7 @@ class ParagraphsController < ApplicationController
     @paragraphs = Paragraph.all
     respond_to do |format|
       format.html
-      format.json {render json: @paragraphs.as_json(only: [:id, :quotations, :paragraph_number, :tvcharacter_id])}
+      format.json {render json: @paragraphs.as_json(only:[:id, :quotations, :paragraph_number], include: [:tvcharacter, {tvcharacter: {only: [:id, :name], include: [:quotes, {quotes: {only: [:id, :character_quote]}}]}}])}
     end
   end
   def home
@@ -15,6 +15,10 @@ class ParagraphsController < ApplicationController
   # GET /paragraphs/1
   # GET /paragraphs/1.json
   def show 
+    respond_to do |format|
+      format.html
+      format.json {render json: @paragraph.as_json(only:[:id, :quotations, :paragraph_number], include: [:tvcharacter, {tvcharacter: {only: [:id, :name], include: [:quotes, {quotes: {only: [:id, :character_quote]}}]}}])}
+    end
   end
 
   # GET /paragraphs/new
