@@ -6,6 +6,7 @@ gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem	'rails_12factor'
 gem 'pg'
+gem 'heroku-deflater', :group => :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
