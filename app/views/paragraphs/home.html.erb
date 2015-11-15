@@ -1,8 +1,1 @@
 <!-- <div id="main"></div> -->
-<% @paragraph.paragraph_number.times do %>
-<p>
-  <% @paragraph.tvcharacter.quotes[0..@paragraph.tvcharacter.quotes.length-1].sample(@paragraph.quotations).each do |quote| %>
-  	<%= quote.character_quote %>
-  <% end %>
-</p>
-<% end %>

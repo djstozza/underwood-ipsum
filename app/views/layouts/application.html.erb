@@ -29,10 +29,10 @@
 		    <%= f.select :tvcharacter_id, Tvcharacter.all.map{|tvcharacter| ["#{tvcharacter.name}", tvcharacter.id]}, :id => 'character' %>
 		  
 		    <%= f.label :quotations, 'Quotes per paragraph' %>
-		    <%= f.number_field :quotations, :min => 1, :max => 20, :id => 'quotes', :value => Random.rand(20) %>
+		    <%= f.number_field :quotations, :min => 1, :max => 20, :id => 'quotes', :value => Random.rand(1..20) %>
 		 
 		    <%= f.label :paragraph_number, 'Number of paragraphs' %>
-		    <%= f.number_field :paragraph_number, :min => 1, :max => 10, :id => 'paragraphs', :value => Random.rand(10) %>
+		    <%= f.number_field :paragraph_number, :min => 1, :max => 10, :id => 'paragraphs', :value => Random.rand(1..10) %>
 		  
 		    <%= f.submit "Generate", :id => "generate" %>
 		  </div>
@@ -45,7 +45,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<%= include_gon %>
+ <%= include_gon(:init => true) %>
 <%= yield %>
 
 </body>
