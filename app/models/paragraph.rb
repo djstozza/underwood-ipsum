@@ -13,7 +13,7 @@
 
 class Paragraph < ActiveRecord::Base
 	belongs_to :tvcharacter
-	has_many :quotes, :through => :subcategories
+	has_many :quotes, :through => :tvcharacter
 
 	validates :tvcharacter_id, :presence => true
 	validates :quotations, :presence => true

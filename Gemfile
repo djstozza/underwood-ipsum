@@ -36,6 +36,10 @@ gem 'nokogiri'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '2.6.2'
+  gem 'factory_girl_rails'
+  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'

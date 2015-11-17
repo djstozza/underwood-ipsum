@@ -11,4 +11,5 @@
 
 class Quote < ActiveRecord::Base
 	belongs_to :tvcharacter
+	validates :character_quote, :presence => true
 end
